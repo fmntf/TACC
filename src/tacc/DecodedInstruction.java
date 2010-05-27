@@ -7,11 +7,31 @@ public class DecodedInstruction
 	public static final int VOID = 2;
 	public static final int GOTO = 3;
 
+	/*
+	 * Tipo di istruzione (vedi costanti)
+	 */
 	public int opcode;
+
+	/*
+	 * Variabile di riferimento
+	 */
 	public String variable;
+
+	/*
+	 * Eventuale etichetta
+	 */
 	public String label = null;
+
+	/*
+	 * Etichetta in cui saltare (per GOTO)
+	 */
 	public String jump = null;
 
+	/**
+	 * Utilizzabile ai fini di debugging, stampa il contenuto dell'istruzione.
+	 *
+	 * @return String
+	 */
 	public String toString()
 	{
 		String s = "[opcode: ";
@@ -37,7 +57,7 @@ public class DecodedInstruction
 	}
 
 	/**
-	 * Restituisce true se l'istruzione ha un GOTO che porta in E
+	 * Restituisce true se l'istruzione ha un GOTO che porta in E.
 	 *
 	 * @return boolean
 	 */

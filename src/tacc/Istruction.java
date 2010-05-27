@@ -19,6 +19,9 @@ public class Istruction
 		this.initPatterns();
 	}
 
+	/**
+	 * Crea dei pattern per riconoscere le istruzioni di TACC
+	 */
 	protected void initPatterns()
 	{
 		String label = "([A-E]\\d*)";
@@ -127,6 +130,16 @@ public class Istruction
 		return false;
 	}
 
+	/**
+	 * Decodifica l'istruzione, stabilendo il tipo di istruzione (opcode) e
+	 * inserendo in una struttura dati le informazioni raccolte, cioè:
+	 *
+	 *  - variabile di riferimento
+	 *  - etichetta opzionale per l'istruzione
+	 *  - etichetta in cui saltare (solo per istruzioni GOTO)
+	 *
+	 * @return DecodedInstruction
+	 */
 	public DecodedInstruction decode()
 	{
 		DecodedInstruction di = new DecodedInstruction();

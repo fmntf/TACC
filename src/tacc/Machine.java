@@ -11,12 +11,14 @@ public class Machine
 	/**
 	 * Costrutture, inizializza la lista di istruzioni e le mappe di variabili
 	 */
-	public Machine()
+	public Machine(boolean debugMode)
 	{
 		this._istructions = new ArrayList<DecodedInstruction>();
 		this._X = new HashMap<String, Integer>();
 		this._Z = new HashMap<String, Integer>();
 		this._Y = 0;
+
+		this.debug = debugMode;
 	}
 
 	/**
@@ -43,14 +45,6 @@ public class Machine
 	 * True per effettuare il debugging
 	 */
 	protected boolean debug = false;
-
-	/**
-	 * Attiva la modalità di debugging, mostrando messaggi sull'esecuzione.
-	 */
-	public void enableDebug()
-	{
-		this.debug = true;
-	}
 
 	/**
 	 * Aggiunge un'istruzione alla lista delle istruzioni.
@@ -99,6 +93,8 @@ public class Machine
 
 	/**
 	 * Fa partire la macchina virtuale TACC.
+	 * Si inizia dalla prima istruzione (l'istruzione 0) e si evolve secondo
+	 * la funzione "successore".
 	 */
 	public void run()
 	{
@@ -163,6 +159,7 @@ public class Machine
 					return index+1;
 				} else {
 					if (istruction.isTerminator()) {
+						if (this.debug) System.out.println("  STOP: jump to exit point!");
 						return -1;
 					} else {
 						return this.getIndexOfIstructionLabeled(istruction.jump);

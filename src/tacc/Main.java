@@ -7,6 +7,10 @@ public class Main {
 		boolean debug = false;
 		boolean dump  = false;
 
+		if (args.length == 0) {
+			Main.wrongUse();
+		}
+
 		for (int i=1; i<args.length; i++) {
 			switch (args[i].charAt(1)) {
 				case 's':
@@ -21,14 +25,12 @@ public class Main {
 			}
 		}
 
-		Machine tvm = new Machine();
+		Machine tvm = new Machine(debug);
 
 		if (!tvm.loadScript(args[0])) {
 			System.out.println("Non è stato possibile aprire/processare il file " + args[0]);
 			System.exit(1);
 		}
-
-		if (debug) tvm.enableDebug();
 
 		System.out.println("Avvio della macchina TACC..\n");
 		tvm.run();

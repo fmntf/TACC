@@ -34,26 +34,25 @@ public class DecodedInstruction
 	 */
 	public String toString()
 	{
-		String s = "[opcode: ";
+		String s = "";
+		if (this.label != null) s = "[" + this.label + "] ";
+
 		switch (this.opcode) {
 			case ADD:
-				s = s.concat("ADD");
+				s = s.concat("ADD ");
 				break;
 			case SUB:
-				s = s.concat("SUB");
+				s = s.concat("SUB ");
 				break;
 			case VOID:
-				s = s.concat("VOID");
+				s = s.concat("VOID ");
 				break;
 			case GOTO:
-				s = s.concat("GOTO, jump: " + this.jump);
+				s = s.concat("GOTO " + this.jump + " ");
 				break;
 		}
 
-		s = s.concat(", variable: " + this.variable);
-		if (this.label != null) s = s.concat(", label: " + this.label);
-
-		return s+"]";
+		return s.concat("on " + this.variable);
 	}
 
 	/**

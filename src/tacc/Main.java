@@ -11,6 +11,7 @@ public class Main {
 			Main.wrongUse();
 		}
 
+		// processa gli argomenti della linea di comando
 		for (int i=1; i<args.length; i++) {
 			switch (args[i].charAt(1)) {
 				case 's':
@@ -20,6 +21,7 @@ public class Main {
 				case 'd':
 					dump = true;
 					break;
+
 				default:
 					Main.wrongUse();
 			}
@@ -34,10 +36,10 @@ public class Main {
 
 		System.out.println("Avvio della macchina TACC..\n");
 		tvm.run();
-		System.out.println("\nElaborazione terminata! La macchina ha restituito " + tvm.getResponse() + ".");
+		System.out.println("Elaborazione terminata! La macchina ha restituito " + tvm.getResponse() + ".\n");
 
 		if (dump) {
-			System.out.println("\nDump delle variabili:");
+			System.out.println("Dump delle variabili:");
 			tvm.dumpMemory();
 		}
     }

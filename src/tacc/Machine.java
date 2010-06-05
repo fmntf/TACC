@@ -135,7 +135,7 @@ public class Machine
 	{
 		DecodedInstruction istruction = this.getIstruction(index);
 		if (istruction == null) {
-			if (this.debug) System.out.println("  STOP: reached end of TACC script!");
+			if (this.debug) System.out.println("  STOP: reached end of TACC script!\n");
 			return -1;
 		}
 		
@@ -159,7 +159,7 @@ public class Machine
 					return index+1;
 				} else {
 					if (istruction.isTerminator()) {
-						if (this.debug) System.out.println("  STOP: jump to exit point!");
+						if (this.debug) System.out.println("  STOP: jump to exit point!\n");
 						return -1;
 					} else {
 						return this.getIndexOfIstructionLabeled(istruction.jump);
